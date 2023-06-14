@@ -6,9 +6,10 @@ import { IGenre } from '~/hooks/useFetchGenre';
 interface ICardWrapperProps {
   movieList: IMovie[] | null;
   genres: IGenre[] | null;
+  onAddToWatchedList: (movie: IMovie) => Promise<void>;
 }
 
-function CardWrapper({ movieList, genres }: ICardWrapperProps) {
+function CardWrapper({ movieList, genres, onAddToWatchedList }: ICardWrapperProps) {
   return (
     <div className="grid grid-cols-5 items-start justify-between">
       {movieList &&
@@ -20,7 +21,8 @@ function CardWrapper({ movieList, genres }: ICardWrapperProps) {
                 title={movie.title}
                 date={movie.release_date}
                 url={`https://image.tmdb.org/t/p/original${movie.poster_path}`}
-                genres="Unkown genres"
+                genres="Unknown genres"
+                onAddToWatchedList={() => onAddToWatchedList(movie)}
               />
             );
           }
@@ -29,7 +31,6 @@ function CardWrapper({ movieList, genres }: ICardWrapperProps) {
             .filter((genre) => targetGenres.includes(genre.id))
             .map((genre) => genre.name)
             .join(', ');
-          console.log(filteredGenres);
 
           return (
             <Card
@@ -38,6 +39,7 @@ function CardWrapper({ movieList, genres }: ICardWrapperProps) {
               date={movie.release_date}
               url={`https://image.tmdb.org/t/p/original${movie.poster_path}`}
               genres={filteredGenres}
+              onAddToWatchedList={() => onAddToWatchedList(movie)}
             />
           );
         })}

@@ -1,5 +1,3 @@
-import { useLayoutEffect } from 'react';
-
 import { IGenre } from '~/hooks/useFetchGenre';
 
 interface IFilterBar {

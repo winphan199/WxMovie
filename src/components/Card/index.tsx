@@ -5,9 +5,10 @@ interface ICardProps {
   date: string;
   genres: string;
   url: string;
+  onAddToWatchedList: any;
 }
 
-function Card({ title, date, genres, url }: ICardProps) {
+function Card({ title, date, genres, url, onAddToWatchedList }: ICardProps) {
   return (
     <div className="m-6 shadow-md hover:shadow-xl rounded-lg cursor-pointer bg-white">
       <div className="rounded-t-lg">
@@ -16,7 +17,7 @@ function Card({ title, date, genres, url }: ICardProps) {
       <div className="p-3">
         <div className="flex items-center justify-between">
           <h3 className="text-lg font-medium capitalize">{title}</h3>
-          <button>
+          <button onClick={onAddToWatchedList}>
             <IconAddLater height="20px" width="20px" className="hover:text-green-300 text-white transition-colors" />
           </button>
         </div>
