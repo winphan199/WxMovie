@@ -1,7 +1,7 @@
 # WxMovie
 
 This page shows all 10 random movies filtered by year and genre.<br/>
-Live demo: xxx
+Live demo: https://wxmovie.netlify.app
 
 ## Start the project
 
