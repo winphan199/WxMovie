@@ -11,7 +11,7 @@ interface ICardWrapperProps {
 
 function CardWrapper({ movieList, genres, onAddToWatchedList }: ICardWrapperProps) {
   return (
-    <div className="grid grid-cols-5 items-start justify-between">
+    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 items-start justify-between">
       {movieList &&
         movieList.map((movie) => {
           if (!genres) {

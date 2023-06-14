@@ -16,13 +16,13 @@ function Card({ title, date, genres, url, onAddToWatchedList }: ICardProps) {
       </div>
       <div className="p-3">
         <div className="flex items-center justify-between">
-          <h3 className="text-lg font-medium capitalize">{title}</h3>
+          <h3 className="text-lg font-medium capitalize line-clamp-1">{title}</h3>
           <button onClick={onAddToWatchedList}>
             <IconAddLater height="20px" width="20px" className="hover:text-green-300 text-white transition-colors" />
           </button>
         </div>
-        <p className="text-sm font-medium text-slate-600">{date}</p>
-        <p className="text-base italic">{genres}</p>
+        <p className="text-sm font-medium text-slate-600 line-clamp-1">{date}</p>
+        <p className="text-base italic line-clamp-1">{genres}</p>
       </div>
     </div>
   );

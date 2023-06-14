@@ -10,13 +10,13 @@ interface IFilterBar {
 
 function FilterBar({ year, onYearChange, genres, genre, onGenreChange }: IFilterBar) {
   return (
-    <div className="flex p-6 bg-white rounded-xl mt-4">
-      <div className="mr-6 flex items-center">
+    <div className="flex flex-wrap p-6 bg-white rounded-xl mt-4">
+      <div className="mr-6 flex items-center justify-between w-full md:justify-start md:w-fit">
         <label className="text-lg font-medium mr-2" htmlFor="year">
           Year
         </label>
         <input
-          className="border-2 border-solid border-[#ddd] px-3 py-2 outline-none rounded-md w-full"
+          className="border-2 border-solid border-[#ddd] px-3 py-2 outline-none rounded-md w-full max-w-[100px]"
           type="number"
           min="1900"
           max="2023"
@@ -27,7 +27,7 @@ function FilterBar({ year, onYearChange, genres, genre, onGenreChange }: IFilter
           onChange={(e) => onYearChange(+e.target.value)}
         />
       </div>
-      <div className="flex items-center">
+      <div className="mr-6 flex items-center justify-between w-full md:justify-start md:w-fit">
         <label htmlFor="genres" className="text-lg font-medium mr-2">
           Genres
         </label>

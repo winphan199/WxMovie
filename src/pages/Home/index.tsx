@@ -7,6 +7,7 @@ import useFetchMovies from '~/hooks/useFetchMovies';
 import useFetchGenre from '~/hooks/useFetchGenre';
 import useFetchWatchedList, { IWatchedMovie } from '~/hooks/useFetchWatchedList';
 import { IMovie } from '~/hooks/useFetchMovies';
+import Loader from '~/components/Loader';
 
 function Home() {
   const { genres: genresList } = useFetchGenre();
@@ -16,7 +17,6 @@ function Home() {
   const {
     watchedList,
     isLoading: isLoadingWatchedList,
-    handleFetchWatchedMovies,
     handlePostNewWatchedMovie,
     handleDeleteWatchedMovie,
   } = useFetchWatchedList();
@@ -45,18 +45,19 @@ function Home() {
       url: `https://image.tmdb.org/t/p/original${movie.poster_path}`,
     };
     await handlePostNewWatchedMovie(watchedMovie);
-    await handleFetchWatchedMovies();
   };
 
   return (
-    <div className="bg-green-300 min-h-screen mt-20 flex">
+    <div className="bg-green-300 min-h-screen w-screen overflow-hidden mt-20 flex relative">
       <div className="px-10 flex-1">
         <FilterBar year={year} onYearChange={setYear} genre={genre} onGenreChange={setGenre} genres={genresList} />
 
         {!isLoading ? (
           <CardWrapper movieList={movies} genres={genresList} onAddToWatchedList={handleAddToWatchedList} />
         ) : (
-          <p>is loading</p>
+          <div className="flex justify-center my-10">
+            <Loader />
+          </div>
         )}
       </div>
       <WatchList

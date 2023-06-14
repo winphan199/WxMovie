@@ -27,3 +27,38 @@ export function IconAddLater({ height = '16px', width = '16px', className = '' }
     </svg>
   );
 }
+
+export function ViewMore({ height = '16px', width = '16px', className = '' }: IIconProps) {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width={width}
+      height={height}
+      className={className}
+      viewBox="0 0 24 24"
+      fill="currentColor"
+    >
+      <path
+        stroke="#000000"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        strokeWidth="2"
+        d="M4 6h16M4 10h16M4 14h16M4 18h16"
+      />
+    </svg>
+  );
+}
+
+export function Close({ height = '16px', width = '16px', className = '' }: IIconProps) {
+  return (
+    <svg xmlns="http://www.w3.org/2000/svg" width={width} height={height} viewBox="0 0 24 24" fill="currentColor">
+      <path
+        d="M16 8L8 16M8.00001 8L16 16"
+        stroke="#000000"
+        strokeWidth="1.5"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </svg>
+  );
+}

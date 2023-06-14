@@ -14,9 +14,9 @@ function WatchListCard({ id, url, title, date, genres, onRemoveWatchedMovie }: I
         <img src={`https://image.tmdb.org/t/p/original${url}`} alt={title} className="w-full h-full rounded-md" />
       </div>
       <div className="p-4 flex flex-col flex-1">
-        <h3 className="text-lg font-medium capitalize">{title}</h3>
-        <p className="text-sm font-medium text-slate-600">{date}</p>
-        <p className="text-base italic">{genres}</p>
+        <h3 className="text-lg font-medium capitalize line-clamp-1">{title}</h3>
+        <p className="text-sm font-medium text-slate-600 line-clamp-1">{date}</p>
+        <p className="text-base italic line-clamp-1">{genres}</p>
         <button
           className="p-2 self-start bg-red-400 text-white font-medium rounded-lg mt-2 hover:bg-red-600"
           onClick={() => {

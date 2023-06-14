@@ -1,4 +1,4 @@
-import { useState, useEffect, useMemo } from 'react';
+import { useState, useEffect } from 'react';
 
 import { supabase } from '~/services/supabaseClient';
 
@@ -39,7 +39,6 @@ function useFetchWatchedList() {
 
   const handlePostNewWatchedMovie = async (watchedMovie: IWatchedMovie) => {
     try {
-      setIsLoading(true);
       const { error } = await supabase.from('watched_list').insert(watchedMovie);
 
       if (error) {
@@ -53,12 +52,8 @@ function useFetchWatchedList() {
           }
         });
       }
-      setIsLoading(false);
-      setError(null);
     } catch (error) {
       console.log(error);
-    } finally {
-      setIsLoading(false);
     }
   };
 
@@ -69,13 +64,21 @@ function useFetchWatchedList() {
       if (error) {
         throw error;
       } else {
-        handleFetchWatchedMovies();
+        setWatchedList((prev) => {
+          if (prev) {
+            const removeMovie = prev.filter((movie) => movie.id !== id);
+            return removeMovie;
+          } else {
+            return prev;
+          }
+        });
       }
     } catch (error) {
       console.log(error);
     }
   };
 
+  // console.log({ watchedList, isLoading, error });
   return {
     watchedList,
     isLoading,
